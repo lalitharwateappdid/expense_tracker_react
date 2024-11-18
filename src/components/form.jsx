@@ -1,5 +1,9 @@
 import { useState,useContext } from "react";
 
+// react-hot-toast
+import toast, { Toaster } from 'react-hot-toast';
+
+
 // materail ui
 import Grid from "@mui/material/Grid2";
 import { Typography } from "@mui/material";
@@ -36,10 +40,13 @@ export const Form = () => {
     const transaction = {...formData,amount:Number(formData.amount),id:uuidv4()}
     addTransaction(transaction)
     setFormData(initialValue)
+    toast.success(`$${formData.amount} ${formData.type} ${formData.type == "expense" ? "deducted":"added"} in ${formData.category} category`);
+
   }
 
   return (
     <>
+    <Toaster />
       <Grid container spacing={2}>
         <Grid size={{ md: 12 }}>
           <Typography title="..." />
@@ -85,7 +92,7 @@ export const Form = () => {
 
       </Grid>
     <Grid >
-    
+          {/* list of all transactions */}
         <ListComponent/>
         </Grid>
     </>

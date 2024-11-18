@@ -1,9 +1,12 @@
-#root, body, html{
+#root,
+body,
+html {
   height: 100%;
   margin: 0;
-  background-color: #c6cdd6;
+  background-color: #dad3d3;
+
+  background-image: radial-gradient(circle at 1px 1px, rgb(32, 30, 30) 1px, transparent 0);
+  background-size: 40px 40px;
+
 }
 
-body{
-  
-}
