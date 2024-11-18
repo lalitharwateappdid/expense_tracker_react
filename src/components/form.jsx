@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 // materail ui
 import Grid from "@mui/material/Grid2";
 import { Typography } from "@mui/material";
@@ -12,6 +14,19 @@ import Button from '@mui/material/Button';
 import { ListComponent } from "./listComponent";
 
 export const Form = () => {
+  const initialValue = {
+    amount:"0",
+    date:new Date(),
+    type:"income",
+    category:""
+  }
+  const [formData, setFormData] = useState(initialValue)
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    console.log(formData)
+  }
+
   return (
     <>
       <Grid container spacing={2}>
@@ -23,7 +38,7 @@ export const Form = () => {
         <Grid size={{ md: 6, xs:12 }}>
           <FormControl fullWidth>
             <InputLabel>Type</InputLabel>
-            <Select label="Type">
+            <Select label="Type" value={formData.type} onChange={(e) => setFormData({...formData,type: e.target.value})} >
               <MenuItem value="income">Income</MenuItem>
               <MenuItem value="expense">Expense</MenuItem>
             </Select>
@@ -34,7 +49,7 @@ export const Form = () => {
         <Grid size={{md: 6, xs: 12}}>
             <FormControl fullWidth>
                 <InputLabel>Category</InputLabel>
-                <Select label="Category">
+                <Select label="Category" value={formData.category} onChange={(e => setFormData({...formData, category: e.target.value }))}>
                     <MenuItem value="business">Business</MenuItem>
                     <MenuItem value="salary">Salary</MenuItem>
                 </Select>
@@ -44,18 +59,18 @@ export const Form = () => {
         {/* amount text field */}
         <Grid size={{md: 6, xs:12}}>
             <FormControl fullWidth>
-                <TextField type="number" label="Amount" fullWidth />
+                <TextField type="number" label="Amount" fullWidth value={formData.amount} onChange={(e) => setFormData({...formData, amount:e.target.value})} />
             </FormControl>
         </Grid>
 
         {/* date text field */}
         <Grid size={{md: 6, xs: 12}}>
             <FormControl fullWidth>
-                <TextField type="date" label="Date" fullWidth/>
+                <TextField type="date" label="Date" fullWidth value={formData.date} onChange={((e) => setFormData({...formData,date:e.target.value}))} />
             </FormControl>
         </Grid>
 
-        <Button variant="outlined"  color="primary">Submit</Button>
+        <Button variant="outlined" onClick={handleSubmit}   color="primary">Submit</Button>
 
       </Grid>
     <Grid >
