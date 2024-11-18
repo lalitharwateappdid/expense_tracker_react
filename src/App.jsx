@@ -1,3 +1,9 @@
+// built-in
+import { useContext } from "react";
+
+// use Context
+import { ExpenseTrackerContext } from "./context/context";
+
 // components
 import { Details } from "./components/Details/details";
 import { MainCard } from "./components/mainCard";
@@ -6,6 +12,9 @@ import { MainCard } from "./components/mainCard";
 import Grid from "@mui/material/Grid2";
 
 function App() {
+  // useContext
+  const globalState = useContext(ExpenseTrackerContext);
+  console.log(globalState)
   return (
     <>
       <div style={{ margin: "20px" }}>
