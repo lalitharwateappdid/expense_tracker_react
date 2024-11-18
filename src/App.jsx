@@ -17,11 +17,11 @@ function App() {
           style={{ height: "100vh" }}
         >
           <Grid size={{ md: 4, xs: 12 }}>
-            <Details type="income" />
+            <Details  title="income" />
           </Grid>
           <Grid size={{ md: 4, xs: 12 }}><MainCard/></Grid>
           <Grid size={{ md: 4, xs: 12 }}>
-            <Details type="expense" />
+            <Details title="expense" />
           </Grid>
         </Grid>
       </div>

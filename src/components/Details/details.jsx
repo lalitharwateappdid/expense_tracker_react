@@ -6,12 +6,12 @@ import { Doughnut } from 'react-chartjs-2';
 
 
 
-export const Details = ({type}) => {
+export const Details = ({title}) => {
 
 
     return (
-        <Card style={{borderBottom: type == "income" ? "5px solid green":"5px solid red"}}>
-            <CardHeader title="income"/>
+        <Card style={{borderBottom: title == "income" ? "5px solid green":"5px solid red"}}>
+            <CardHeader title={title}/>
             <CardContent>
                 <Typography variant='h5'>$50</Typography>
                 {/* <Doughnut data="DATA"/> */}
