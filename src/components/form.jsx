@@ -10,6 +10,9 @@ import Select from "@mui/material/Select";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
+// uuid
+import {v4 as uuidv4} from "uuid"
+
 // component
 import { ListComponent } from "./listComponent";
 
@@ -25,6 +28,7 @@ export const Form = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     console.log(formData)
+    // console.log(uuidv4())
   }
 
   return (
