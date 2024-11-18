@@ -13,6 +13,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import {Divider } from '@mui/material';
 
 // uuid
 import {v4 as uuidv4} from "uuid"
@@ -91,6 +92,7 @@ export const Form = () => {
         <Button variant="outlined" onClick={handleSubmit}   color="primary">Submit</Button>
 
       </Grid>
+      <Divider style={{padding: "10px"}}/>
     <Grid >
           {/* list of all transactions */}
         <ListComponent/>
