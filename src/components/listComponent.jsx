@@ -14,21 +14,39 @@ import { MdDelete } from "react-icons/md";
 import { useContext } from "react";
 
 export const ListComponent = () => {
-  const { transactions } = useContext(ExpenseTrackerContext);
-  console.log(transactions)
+  const { transactions, deleteTransaction } = useContext(ExpenseTrackerContext);
+  // console.log(transactions)
+
+  const handleDeleteTransaction = (id) => {
+    deleteTransaction(id);
+  };
+
   return (
     <>
       <List>
-        {transactions.map(( transaction) => (
-
+        {transactions.map((transaction) => (
           <ListItem
             key={transaction.id}
-            secondaryAction={<MdDelete style={{ fontSize: "20px" }} />}
+            secondaryAction={
+              <MdDelete
+                onClick={() => handleDeleteTransaction(transaction.id)}
+                style={{ fontSize: "20px" }}
+              />
+            }
           >
             <ListItemAvatar>
-              <HiOutlineCash style={{ fontSize: "25px", color: transaction.type =="income" ? "green":"red" }} />
+              <HiOutlineCash
+                style={{
+                  fontSize: "25px",
+                  color: transaction.type == "income" ? "green" : "red",
+                }}
+              />
             </ListItemAvatar>
-            <ListItemText style={{textTransform:"capitalize"}} primary={`${transaction.category}`} secondary={`$${transaction.amount}`} />
+            <ListItemText
+              style={{ textTransform: "capitalize" }}
+              primary={`${transaction.category}`}
+              secondary={`$${transaction.amount} | ${transaction.date}`}
+            />
           </ListItem>
         ))}
         {/* <ListItem  secondaryAction={

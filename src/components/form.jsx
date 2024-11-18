@@ -33,7 +33,7 @@ export const Form = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    const transaction = {...formData,amount:Number(formData.amount),id:uuidv4}
+    const transaction = {...formData,amount:Number(formData.amount),id:uuidv4()}
     addTransaction(transaction)
     setFormData(initialValue)
   }
