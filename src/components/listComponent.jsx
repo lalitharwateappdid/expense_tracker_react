@@ -5,25 +5,33 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 
+// context
+import { ExpenseTrackerContext } from "../context/context";
+
 // react icons
 import { HiOutlineCash } from "react-icons/hi";
 import { MdDelete } from "react-icons/md";
+import { useContext } from "react";
 
 export const ListComponent = () => {
+  const { transactions } = useContext(ExpenseTrackerContext);
+  console.log(transactions)
   return (
     <>
       <List>
-        <ListItem  secondaryAction={
-                    <MdDelete style={{fontSize:"20px"}} />
-                  }>
-          <ListItemAvatar>
-           
-              <HiOutlineCash style={{fontSize:"25px", color:"green"}} />
-          </ListItemAvatar>
-          <ListItemText primary="Hello world" secondary="e" />
-         
-        </ListItem>
-        <ListItem  secondaryAction={
+        {transactions.map(( transaction) => (
+
+          <ListItem
+            key={transaction.id}
+            secondaryAction={<MdDelete style={{ fontSize: "20px" }} />}
+          >
+            <ListItemAvatar>
+              <HiOutlineCash style={{ fontSize: "25px", color: transaction.type =="income" ? "green":"red" }} />
+            </ListItemAvatar>
+            <ListItemText style={{textTransform:"capitalize"}} primary={`${transaction.category}`} secondary={`$${transaction.amount}`} />
+          </ListItem>
+        ))}
+        {/* <ListItem  secondaryAction={
                     <MdDelete style={{fontSize:"20px"}} />
                   }>
           <ListItemAvatar>
@@ -32,7 +40,7 @@ export const ListComponent = () => {
           </ListItemAvatar>
           <ListItemText primary="Hello world" secondary="e" />
          
-        </ListItem>
+        </ListItem> */}
       </List>
     </>
   );

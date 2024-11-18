@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 
 // materail ui
 import Grid from "@mui/material/Grid2";
@@ -13,22 +13,29 @@ import Button from '@mui/material/Button';
 // uuid
 import {v4 as uuidv4} from "uuid"
 
+// context
+import { ExpenseTrackerContext } from "../context/context";
+
 // component
 import { ListComponent } from "./listComponent";
 
 export const Form = () => {
+  const {addTransaction}  = useContext(ExpenseTrackerContext)
+
   const initialValue = {
-    amount:"0",
+    amount:"",
     date:new Date(),
     type:"income",
-    category:""
+    category:"",
+    
   }
   const [formData, setFormData] = useState(initialValue)
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(formData)
-    // console.log(uuidv4())
+    const transaction = {...formData,amount:Number(formData.amount),id:uuidv4}
+    addTransaction(transaction)
+    setFormData(initialValue)
   }
 
   return (

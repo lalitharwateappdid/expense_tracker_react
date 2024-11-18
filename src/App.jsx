@@ -14,7 +14,6 @@ import Grid from "@mui/material/Grid2";
 function App() {
   // useContext
   const globalState = useContext(ExpenseTrackerContext);
-  console.log(globalState)
   return (
     <>
       <div style={{ margin: "20px" }}>
