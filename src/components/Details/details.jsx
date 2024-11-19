@@ -21,18 +21,17 @@ export const Details = ({title}) => {
 
   // console.log(transactions.length)
 
+  let total_data = 0
   for(let i=0;i<transactions.length;i++){
     if(transactions[i]?.type == `${title}`){
-      
       transaction_data.push(transactions[i].amount)
-      
+      total_data += transactions[i].amount
     }
   }
 
-  let total_data = 0
-  transaction_data.forEach(num => {
-    total_data += Number(num)
-  })
+  // transaction_data.forEach(num => {
+  //   total_data += Number(num)
+  // })
   // console.log(transaction_data)
 
     const data = {
