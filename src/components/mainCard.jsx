@@ -11,9 +11,9 @@ export const MainCard =() => {
                 <CardHeader title="Expense Tracker" subheader="Create By Lalit"/>
                 <CardContent>
                     {/* <Typography display="flex" alignItems="center" variant='h5'>Hello world</Typography> */}
-                    <Typography style={{lineHeight:"1.5em", marginTop: "20px"}}  variant='subtitle1'>
+                    {/* <Typography style={{lineHeight:"1.5em", marginTop: "20px"}}  variant='subtitle1'>
                         Try saying:  Add Income for $100 in Category Salary for Monday...
-                    </Typography>
+                    </Typography> */}
                 </CardContent>
                 <Divider/>
                 <CardContent>
